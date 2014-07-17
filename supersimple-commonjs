@@ -1,7 +1,7 @@
 // A super simple CommonJs-ish module system for brownfield projects that want a module system
 // but don't want to expend effort toward rewriting things properly to work with better module systems
 
-// Runnable Sample: http://jsbin.com/tiriz/5/edit?js,console
+// Runnable Sample: http://jsbin.com/tiriz/6/edit?js,console
 
 // Features: None! 
 // Ok, there's two
@@ -16,16 +16,18 @@ window.require = function(name) {
       throw Error("Circular dependency detected when requiring "+ name + ". The following modules were already required: " + currentRequires.join(', '));
     currentRequires.push(name);
 	var res = window.require._definedModules[name].instance || 
-            (window.require._definedModules[name].instance = window.require._definedModules[name].fn.call());
+            (window.require._definedModules[name].instance = 
+              (typeof window.require._definedModules[name].definition == 'function' ? window.require._definedModules[name].definition() : window.require._definedModules[name].definition)
+            );
     if(currentRequires.pop() != name)
       throw Error("Something went wrong in dependency resolution when returning module "+name+ ". We're not sure how this happened.")
     return res;
 }
-window.define = function(name, fn) {
+window.define = function(name, definition) {
     window.require._definedModules || (window.require._definedModules = {});
 	window.require._definedModules[name] = {
 		instance: null,
-		fn: fn
+		definition: definition
 	};
 }
 
