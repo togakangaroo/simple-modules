@@ -16,9 +16,7 @@ window.require = function(name) {
       throw Error("Circular dependency detected when requiring "+ name + ". The following modules were already required: " + currentRequires.join(', '));
     currentRequires.push(name);
 	var res = window.require._definedModules[name].instance || 
-            (window.require._definedModules[name].instance = 
-              (typeof window.require._definedModules[name].definition == 'function' ? window.require._definedModules[name].definition() : window.require._definedModules[name].definition)
-            );
+            (window.require._definedModules[name].instance = window.require._definedModules[name].definition());
     if(currentRequires.pop() != name)
       throw Error("Something went wrong in dependency resolution when returning module "+name+ ". We're not sure how this happened.")
     return res;
