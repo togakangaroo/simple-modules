@@ -1,7 +1,7 @@
 // A super simple CommonJs-ish module system for brownfield projects that want a module system
 // but don't want to expend effort toward rewriting things properly to work with better module systems
 
-// Runnable Sample: http://jsbin.com/tiriz/7/edit?js,console
+// Runnable Sample: http://jsbin.com/tiriz/8/edit?js,console
 
 // Features: None! 
 // Ok, there's two
