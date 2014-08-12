@@ -5,7 +5,7 @@ It's not commonjs and its not AMD. It's something in between that will help you 
 A super simple commonjs-ish module system for brownfield projects that want a module system
 but don't want to expend effort toward rewriting things properly to work with better module systems.
 
-[Runnable Sample](http://jsbin.com/tiriz/8/edit?js,console)
+[Runnable Sample](http://jsbin.com/tiriz/watch?js,console)
 
 Features: None! 
 
