@@ -1,0 +1,23 @@
+{
+  "name": "simple-modules",
+  "main": "simple-modules.js",
+  "version": "0.0.1",
+  "homepage": "https://github.com/togakangaroo/simple-modules",
+  "authors": [
+    "George Mauer <gmauer@gmail.com>"
+  ],
+  "description": "A super-simple commonjs-ish module system that is easy to use with brownfield projects",
+  "keywords": [
+    "modules",
+    "brownfield",
+    "module-system"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
