@@ -83,4 +83,4 @@ d();
 
 ## Refactoring
 
-Articles on how to refactor to SimpleModules are forthcoming.
+* [Refactoring to SimpleModules (Part 1)](http://togakangaroo.github.io/2014/10/31/use-simple-modules-1.html)
