@@ -1,19 +1,49 @@
 What the heck is this?
 
-It's not commonjs and its not AMD. It's something in between that will help you transition to either
+**It's a tiny and very very simple javascript module system that you can use to help you improve bronfield code.**
 
-A super simple commonjs-ish module system for brownfield projects that want a module system
-but don't want to expend effort toward rewriting things properly to work with better module systems.
+It's not commonjs and its not AMD. It's something in between that will help you transition to either.
 
-[Runnable Sample](http://jsbin.com/tiriz/watch?js,console)
+## When to (not) use SimpleModules
 
-Features: None! 
+Do not use this if Browerify, RequireJs, Webpack, ES6 Modules, or something better is available to you. Do not use this on a new project, on a new project pick one of the above.
 
-Ok, there's two
-  * Module initializations are singletons
-  * Some naive circular reference detection
+Use this when you have a project with lots of messy javascript that you just need to clean up already. Use it to bring sanity to the madness. By bad code we're talking [stuff like this](https://gist.github.com/togakangaroo/a6d527ab1225736e2fc7).
+
+Ok, here's the thing. Javascript modules are the single most important thing you can do to organize your code. Modules allow you to isolate bits of code, name them, and explicitly define dependencies. Poor separation of concerns and dependency managemnt is a major source of bugs in js.
+
+And all those libraries listed above are fine solutions to the problem. But alot of existing projects can't easily shim these in. 
+  * Browserify and Webpack require a node-based build step which is already a dealbreaker for many projects. Additionally it requires dependencies to be clearly defined in order to create a bundle. Look at that bad code above. [Look at it](https://gist.github.com/togakangaroo/a6d527ab1225736e2fc7). Can you pick out the dependencies? How is 
+  * RequrieJs also requires knowing your dependencies. Plus the asynchronous loading nature of Require makes it very difficult to refactor existing projects slowly to it. Many times you hit dependency chains where the only recourse is to move them to modules all at once.
+
+So we have SimpleModules. SimpleModules is
+
+* Tiny, so it is easy to include on every page of your project - just put it in the head
+* Synchronous, so it can be easily implemented piecemeal. Loading is let entirely up to the project. Load your scripts the same way you normally do, SimpleModules wills tay out of your way.
+* Requires no serverside processing, so it is equally useful with .Net, Php, Ruby, static pages, or any other project.
+* Similar in syntax to other module systems. After you refactor fully to SimpleModules it will be a relatively short jump to start using Browserfy or Require.
 
 ## Usage
+
+SimpleModules gives you two global functions
+
+    define('nameOfModule', function() {
+       return yourModule;
+    });
+    
+    var m = require('nameOfModule');
+    
+And that's it! [Here's a runnable sample](http://jsbin.com/tiriz/watch?js,console)
+
+## Features
+
+None! 
+
+Ok, there's two
+  * Modules aren't initialized until they're invoked for the first time. Once they are, the returned instance is cached and the same isntance is returned on additional invocations.
+  * Contains some naive dection of circular references
+
+## Samples
 
 ```javascript
 //First define your modules
@@ -49,21 +79,8 @@ define('D', function() {
 // Then require your top level one
 var d = require('D');
 d();
-
-// Will detect circular references
-define('Loop1', function(){
-  require('Loop2');
-  console.log("Loop1 loaded");
-})
-define('Loop2', function(){
-  require('C');
-  require('Loop3');
-  console.log("Loop2 loaded");
-})
-define('Loop3', function(){
-  require('Loop1');
-  console.log("Loop3 loaded");
-})
-
-require('Loop1'); //Will throw a circular dependency error
 ```
+
+## Refactoring
+
+Articles on how to refactor to SimpleModules are forthcoming.
