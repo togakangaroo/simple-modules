@@ -1,6 +1,6 @@
 What the heck is this?
 
-**It's a tiny and very very simple javascript module system that you can use to help you improve bronfield code.**
+**It's a tiny and very very simple javascript module system that you can use to help you improve brownfield code.**
 
 It's not commonjs and its not AMD. It's something in between that will help you transition to either.
 
