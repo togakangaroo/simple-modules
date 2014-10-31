@@ -13,7 +13,7 @@ Use this when you have a project with lots of messy javascript that you just nee
 Ok, here's the thing. Javascript modules are the single most important thing you can do to organize your code. Modules allow you to isolate bits of code, name them, and explicitly define dependencies. Poor separation of concerns and dependency managemnt is a major source of bugs in js.
 
 And all those libraries listed above are fine solutions to the problem. But alot of existing projects can't easily shim these in. 
-  * Browserify and Webpack require a node-based build step which is already a dealbreaker for many projects. Additionally it requires dependencies to be clearly defined in order to create a bundle. Look at that bad code above. [Look at it](https://gist.github.com/togakangaroo/a6d527ab1225736e2fc7). Can you pick out the dependencies? How is 
+  * Browserify and Webpack require a node-based build step which is already a dealbreaker for many projects. Additionally it requires dependencies to be clearly defined in order to create a bundle. Look at that bad code above. [Look at it](https://gist.github.com/togakangaroo/a6d527ab1225736e2fc7). Can you pick out granual modules much less the dependencies?
   * RequrieJs also requires knowing your dependencies. Plus the asynchronous loading nature of Require makes it very difficult to refactor existing projects slowly to it. Many times you hit dependency chains where the only recourse is to move them to modules all at once.
 
 So we have SimpleModules. SimpleModules is
