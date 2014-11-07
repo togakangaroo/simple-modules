@@ -4,6 +4,8 @@ What the heck is this?
 
 It's not commonjs and its not AMD. It's something in between that will help you transition to either.
 
+This project is [MIT licensed](http://opensource.org/licenses/MIT).
+
 ## When to (not) use SimpleModules
 
 Do not use this if Browerify, RequireJs, Webpack, ES6 Modules, or something better is available to you. Do not use this on a new project, on a new project pick one of the above.
